@@ -16,16 +16,21 @@ const salesRoutes = require('./src/routes/sales');
 const mediaRoutes = require('./src/routes/media');
 const reportRoutes = require('./src/routes/reports');
 
-const app = express();
-const PORT = process.env.PORT || 5000;
-
 // Middleware
-app.use(cors({ origin: ['http://localhost:5173', 'http://localhost:3000'], credentials: true }));
+app.use(cors({
+    origin: [
+        'http://localhost:5173',
+        'http://localhost:3000',
+        'https://supply-chain-management.onrender.com', // Example Render URL
+        /\.onrender\.com$/ // Allow all Render subdomains
+    ],
+    credentials: true
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get('/', (req, res) => {
-    res.json({ success: true, message: 'Welcome to the EVehicle Supply Chain API. Please use the frontend at http://localhost:5173 to access the system.' });
+    res.json({ success: true, message: 'EVehicle Supply Chain API is alive.' });
 });
 
 // Serve uploaded files

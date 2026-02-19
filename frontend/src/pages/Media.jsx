@@ -3,7 +3,7 @@ import api from '../api/client';
 import Layout from '../components/Layout';
 import toast from 'react-hot-toast';
 
-const API_BASE = 'http://localhost:5000';
+const API_BASE = import.meta.env.VITE_API_BASE_URL?.replace('/api', '') || 'http://localhost:5000';
 
 export default function Media() {
     const [items, setItems] = useState([]);
