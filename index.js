@@ -16,6 +16,9 @@ const salesRoutes = require('./src/routes/sales');
 const mediaRoutes = require('./src/routes/media');
 const reportRoutes = require('./src/routes/reports');
 
+const app = express();
+const PORT = process.env.PORT || 5000;
+
 // Middleware
 app.use(cors({
     origin: [
